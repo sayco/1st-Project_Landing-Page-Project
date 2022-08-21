@@ -28,25 +28,42 @@
  * Start Helper Functions
  *
  */
+function getNavMenu() {
+  let navElements = [];
 
+  const sectionsContent = document.querySelectorAll("section"); // Get All Sections Data
+
+  sectionsContent.forEach(function (section) {
+    navElements.push(section.dataset["nav"]); // Get Individual Section data name
+  });
+  return navElements;
+}
 /**
  * End Helper Functions
  * Begin Main Functions
  *
  */
 
+/**
+ * NAME       : generateNavBar
+ * DESCRIPTION: This function is used to Generate the navigation bar elements dynamically
+ */
+const navBarSections = getNavMenu(); // Get Sections name As an Array
+
+function generateNavBar() {
+  const fragment = document.createDocumentFragment();
+
+  navBarSections.forEach(function (section) {
+    const newElement = document.createElement("li"); // Create <li> element for each section dynamically
+    newElement.textContent = section;
+    fragment.appendChild(newElement);
+  });
+
+  document.querySelector("#navbar__list").appendChild(fragment); // Insert the created list to the existing <ul> list
+}
+
 // build the nav
-// Get All Sections Data
-const sectionsContent = document.querySelectorAll("section");
-console.log(sectionsContent);
-
-sectionsContent.forEach(function (section) {
-  // Get individual Section Information
-  console.log(section);
-  // Get Individual Section data name
-  console.log(section.dataset["nav"]);
-});
-
+generateNavBar();
 // Add class 'active' to section when near top of viewport
 
 // Scroll to anchor ID using scrollTO event
