@@ -84,5 +84,21 @@ generateNavBar();
 // Build menu
 
 // Scroll to section on link click
+document
+  .querySelector("#navbar__list")
+  .addEventListener("click", function (evt) {
+    evt.preventDefault();
+    if (evt.target.nodeName === "LI") {
+      const elementParentID = evt.target.parentElement.hash;
+      console.log(evt);
+
+      const element = document.querySelector(elementParentID);
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  });
 
 // Set sections as active
