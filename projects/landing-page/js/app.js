@@ -29,6 +29,12 @@
  *
  */
 
+/**
+ * This function is used to collect all sections data dynamically
+ *
+ * @returns {Array} an array contains all sections data
+ */
+
 function getSectionsData() {
   let sectionsData = [];
 
@@ -76,18 +82,18 @@ generateNavBar();
 const sectionsContent = document.querySelectorAll("section"); // Select All Sections Data
 sectionsContent.forEach(function (section) {
   document.addEventListener("scroll", (event) => {
-    const clientHeight = document.documentElement.clientHeight;
-    const sectionY = section.getBoundingClientRect().y;
-    const sectionHight = section.getBoundingClientRect().height;
-    if (sectionHight > sectionY && sectionY > 0) {
+    const sectionHight = section.getBoundingClientRect().height; // Calculate Section Height
+    const sectionTop = section.getBoundingClientRect().top; //  Calculate distance between section top and screen top
+    const sectionBottom = section.getBoundingClientRect().bottom; //  Calculate distance between section bottom and screen top
+
+    // calculate when the section should be active during appearance on screen
+    if (sectionHight / 3 > sectionTop && sectionBottom > sectionHight / 2) {
       section.classList.add("active");
     } else {
       section.classList.remove("active");
     }
   });
 });
-
-// Scroll to anchor ID using scrollTO event
 
 /**
  * End Main Functions
@@ -105,6 +111,7 @@ document
     if (evt.target.nodeName === "LI") {
       const elementParentID = evt.target.parentElement.hash;
       const element = document.querySelector(elementParentID);
+      // Scroll to anchor ID using scrollTO event
       element.scrollIntoView({
         behavior: "smooth",
         block: "start",
