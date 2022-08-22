@@ -3,10 +3,10 @@
 ## Table-of-Contents
 
 - [Landing Page Project](#landing-page-project)
-  - [Table-of-Contents](#table-of-contents)
-  - [Project-Description](#project-description)
-  - [Demo-Preview](#demo-preview)
-  - [Dependencies](#dependencies)
+- [Table-of-Contents](#table-of-contents)
+- [Project-Description](#project-description)
+- [Demo-Preview](#demo-preview)
+- [Dependencies](#dependencies)
 
 ## Project-Description
 
@@ -22,6 +22,7 @@ It has Four main tasks:
 - Highlights section in viewport upon scrolling.
 
 ## Demo-Preview
+![Animation](https://user-images.githubusercontent.com/3948304/186037684-9b3e9c5b-5d0b-4124-8368-0ef414bc8ed4.gif)
 
 ## Dependencies
 
