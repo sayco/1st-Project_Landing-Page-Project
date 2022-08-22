@@ -73,6 +73,20 @@ function generateNavBar() {
 generateNavBar();
 // Add class 'active' to section when near top of viewport
 
+const sectionsContent = document.querySelectorAll("section"); // Select All Sections Data
+sectionsContent.forEach(function (section) {
+  document.addEventListener("scroll", (event) => {
+    const clientHeight = document.documentElement.clientHeight;
+    const sectionY = section.getBoundingClientRect().y;
+    const sectionHight = section.getBoundingClientRect().height;
+    if (sectionHight > sectionY && sectionY > 0) {
+      section.classList.add("active");
+    } else {
+      section.classList.remove("active");
+    }
+  });
+});
+
 // Scroll to anchor ID using scrollTO event
 
 /**
