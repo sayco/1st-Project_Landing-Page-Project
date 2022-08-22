@@ -28,16 +28,18 @@
  * Start Helper Functions
  *
  */
-function getNavMenu() {
-  let navElements = [];
 
-  const sectionsContent = document.querySelectorAll("section"); // Get All Sections Data
+function getSectionsData() {
+  let sectionsData = [];
+
+  const sectionsContent = document.querySelectorAll("section"); // Select All Sections Data
 
   sectionsContent.forEach(function (section) {
-    navElements.push(section.dataset["nav"]); // Get Individual Section data name
+    sectionsData.push(section); // Prepare an array contains all Sections data [ID and data] to be used
   });
-  return navElements;
+  return sectionsData;
 }
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -45,21 +47,26 @@ function getNavMenu() {
  */
 
 /**
- * NAME       : generateNavBar
- * DESCRIPTION: This function is used to Generate the navigation bar elements dynamically
+ * Generate the Navbar menu dynamically depending on sections data.
+ *
+ * @return {null} null.
  */
-const navBarSections = getNavMenu(); // Get Sections name As an Array
 
 function generateNavBar() {
+  const navBarSections = getSectionsData(); // Get Sections data Array
   const fragment = document.createDocumentFragment();
 
   navBarSections.forEach(function (section) {
-    const newElement = document.createElement("li"); // Create <li> element for each section dynamically
-    newElement.textContent = section;
-    fragment.appendChild(newElement);
+    const newAnchorElement = document.createElement("a"); // Create <a> element for each section dynamically
+    newAnchorElement.setAttribute("href", `#${section.id}`); // add href attribute with each section ID
+    const newListElement = document.createElement("li"); // Create <li> element for each section dynamically
+    newListElement.textContent = section.dataset["nav"]; // Create Navbar element text using section dataset dynamically
+    newAnchorElement.appendChild(newListElement); // insert the list item inside the anchor element
+    // newAnchorElement.classList.add("menu__link");
+    fragment.appendChild(newAnchorElement);
   });
 
-  document.querySelector("#navbar__list").appendChild(fragment); // Insert the created list to the existing <ul> list
+  document.querySelector("#navbar__list").appendChild(fragment); // Insert the created list to the existing <ul> list element
 }
 
 // build the nav
