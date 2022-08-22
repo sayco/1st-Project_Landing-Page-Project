@@ -64,6 +64,7 @@ function generateNavBar() {
 
   navBarSections.forEach(function (section) {
     const newAnchorElement = document.createElement("a"); // Create <a> element for each section dynamically
+    newAnchorElement.classList.add("menu__link"); // add href attribute with each section ID
     newAnchorElement.setAttribute("href", `#${section.id}`); // add href attribute with each section ID
     const newListElement = document.createElement("li"); // Create <li> element for each section dynamically
     newListElement.textContent = section.dataset["nav"]; // Create Navbar element text using section dataset dynamically
