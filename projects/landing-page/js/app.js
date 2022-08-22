@@ -90,15 +90,20 @@ document
     evt.preventDefault();
     if (evt.target.nodeName === "LI") {
       const elementParentID = evt.target.parentElement.hash;
-      console.log(evt);
-
       const element = document.querySelector(elementParentID);
       element.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",
       });
+
+      // Remove sections as active from all section
+      const sectionsContent = document.querySelectorAll("section"); // Select All Sections Data
+      sectionsContent.forEach(function (section) {
+        section.classList.remove("active"); // Remove active Class from all sections elements
+      });
+
+      // Set sections as active
+      element.classList.add("active");
     }
   });
-
-// Set sections as active
