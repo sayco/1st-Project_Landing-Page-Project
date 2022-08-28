@@ -72,7 +72,7 @@ section {
 }
 
 .navbar__menu li {
-  display: inline-block;
+  display: block;
 }
 
 .navbar__menu .menu__link {
@@ -93,6 +93,13 @@ section {
   background: #333;
   color: #fff;
   transition: ease 0.3s all;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar__menu .menu__link {
+    float: none;
+    display: block;
+  }
 }
 
 /* Header Styles */
