@@ -109,6 +109,11 @@ document
   .querySelector("#navbar__list")
   .addEventListener("click", function (evt) {
     evt.preventDefault();
+    const menuLinks = document.querySelectorAll(".menu__link"); // Select All Sections Data
+    menuLinks.forEach(function (menuLink) {
+      menuLink.classList.remove("active_link"); // Remove active Class from all NAVBAR elements
+    });
+    evt.target.parentElement.classList.add("active_link");
     if (evt.target.nodeName === "LI") {
       const elementParentID = evt.target.parentElement.hash;
       const element = document.querySelector(elementParentID);
